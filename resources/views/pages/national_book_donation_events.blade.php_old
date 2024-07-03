@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Events</title>
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/bundel.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/stylesecond.css')}}">
+    <link rel="stylesheet" href="{{ asset('frontend/css/boostrap.css')}}">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
+
+    <style>
+        .nav-secondary a {
+            font-size: 16px;
+            text-decoration: none;
+            color: black;
+        }
+
+        .nav a {
+            color: black;
+            text-decoration: none;
+            font-size: 16px;
+        }
+
+        ul {
+            padding-left: 0px;
+        }
+
+        h2 {
+            font-size: 42px;
+            line-height: 40px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .event .hr-bg {
+            max-width: 235px;
+        }
+
+        /* #desc-area{
+    padding: 100px 50px;
+}
+#event-area{
+    padding: 100px 50px;
+} */
+        .bg-green-light {
+            background-color: #bfe9e1
+        }
+
+        .bg-red {
+            background-color: #ec3e4f
+        }
+
+        .btn-padding {
+            padding: 5px 15px;
+        }
+
+        .bd-green {
+            border: 2px solid #004750b8;
+        }
+
+        div.mt-30 {
+            margin-top: 30px;
+        }
+
+        div.mb_70 {
+            margin-bottom: -70px;
+        }
+
+        div.mb-50 {
+            margin-bottom: 50px;
+        }
+
+        div.m-auto {
+            margin: auto;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .event-lists {
+            font-size: 20px;
+            color: #004750;
+            line-height: 34px;
+            list-style: disc;
+        }
+
+        .event-lists li {
+            margin-left: 25px;
+        }
+
+        .fest-content {
+            margin-top: 1px;
+        }
+
+        .event-section {
+            padding-top: 75px;
+            padding-bottom: 40px;
+        }
+
+        .js-tabs .event-tabs {
+            display: flex !important;
+            background: #f5f5f5;
+            margin-bottom: 40px;
+            justify-content: start !important;
+        }
+
+        .event-tabs li {
+            padding: 8px 20px;
+            background-color: #d2d2d2;
+            margin-left: 2px;
+        }
+
+        /* .footer p{
+    color: white;
+    font-size: 12px;
+ } */
+        /* .nav-footer li a{
+    font-size: 12px;
+ } */
+        .tabs .tabs__nav li:nth-child(3) {
+            padding-left: 20px;
+        }
+
+        .event-tabs li.is-current {
+            background: #004750;
+        }
+
+        .event-tabs li.is-current a p {
+            color: white;
+        }
+
+        .featured-books {
+            padding-top: 20px;
+            padding-bottom: 10px;
+        }
+
+        .height-100 {
+            height: 100%;
+        }
+
+        .tab {
+            visibility: hidden;
+            opacity: 0;
+            pointer-events: none;
+            position: relative;
+            display: none;
+            -webkit-transition: 0.3s;
+            -o-transition: 0.3s;
+            transition: 0.3s;
+        }
+
+        .tab.is-current {
+            display: block;
+            visibility: visible;
+            opacity: 1;
+            pointer-events: all;
+            -webkit-animation: fadein 0.3s ease-in;
+            animation: fadein 0.3s ease-in;
+        }
+
+        .sub-title-past {
+            font-size: 16px;
+        }
+
+        .event-image img {
+            margin-right: 5px;
+        }
+
+        .clear-both {
+            clear: both;
+        }
+
+        .hr-bg-red {
+            background: #fd4a5c;
+        }
+
+        .book-list .hr-bg {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+
+        .event .hr-bg {
+            max-width: 235px;
+        }
+
+        .hr-bg {
+            border-color: transparent;
+            height: 3px;
+            max-width: 100px;
+            margin-left: 0px;
+            margin-top: 35px;
+            margin-bottom: 30px;
+        }
+
+        .padding-zero {
+            padding-left: 0px;
+            padding-right: 0px;
+        }
+
+        /* @media (min-width: 993px){
+.col-md-6 {
+    display: flex;
+    align-items: center;
+}
+
+} */
+        @media (max-width: 767px) {
+
+            div.mb_70,
+            div.mt-30,
+            div.mb-50 {
+                margin-bottom: 0px;
+                margin-top: 0px;
+            }
+
+            .event-tabs {
+                display: block;
+                margin-bottom: 0px;
+            }
+
+            .tab-wrapper {
+                width: 100%;
+            }
+
+            .event-tabs li {
+                padding-top: 10px;
+            }
+
+            .event-tabs li p {
+                padding-bottom: 7px;
+            }
+
+            .event-section {
+                padding-top: 35px;
+                padding-bottom: 0px;
+            }
+
+            .tab .col-md-3 {
+                width: 100%;
+                margin-top: 20px;
+                margin-bottom: 12px;
+            }
+
+            .tab .col-md-3 .left-upcoming {
+                padding: 12px;
+            }
+
+            .fest-content {
+                margin-bottom: 0px;
+            }
+
+            .btn-click {
+                margin-top: 20px;
+            }
+
+            .event .hr-bg {
+                max-width: 120px;
+            }
+
+            .event-lists li,
+            .form-submit {
+                font-size: 17px;
+                line-height: 24px;
+            }
+
+            .event-image.div-flex {
+                display: block;
+            }
+
+            .event-image img {
+                float: left;
+            }
+
+            .event-vieo.event-image img {
+                width: 32%;
+            }
+
+            .event-image img:last-child {
+                float: none;
+            }
+
+            .event-vieo.event-image a {
+                width: 32%;
+                float: left;
+                margin-right: 3px;
+            }
+
+            .event-vieo.event-image img {
+                width: 100%;
+            }
+        }
+
+        /* @media (min-width: 992px){
+.col-md-12 {
+    width: 100%;
+}}
+
+ 
+.rowg{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0 4px;
+    gap: 20px;
+    margin-bottom: 40px;
+}
+.col-md-12g {
+    width: 50%;
+}
+.col-md-6g {
+    width: 47%;
+} */
+        .tab:after {
+            content: "";
+            position: absolute;
+            left: 13.6%;
+            top: -2.5rem;
+            width: 0;
+            height: 0;
+            border-left: 3rem solid transparent;
+            border-right: 3rem solid transparent;
+            border-bottom: 3rem solid #ffffff;
+            clear: both;
+        }
+    </style>
+</head>
+
+<body class=" ">
+    <div class="wrapper">
+
+
+
+
+        <div id="body-wrap">
+            <header class="header js-header ">
+
+                <div class="shell header__shell">
+
+                    <a href="{{ route('home') }}" class="logo">
+
+                        <img src="{{ asset('new/assets/images/logo.svg')}}  " alt="">
+
+                    </a>
+
+                    <div class="header__bar">
+
+                        <nav class="nav-secondary">
+    
+                            <ul>
+    
+                                <li>
+                                    <a href="{{ route('national_book_donation_events') }}">
+                                        National Book Donation Events
+                                    </a>
+                                </li>
+                                <li>
+                                <a href="{{route('reading-portal-login-form')}}">
+                                        <i class="ico-arrow-right"></i>
+                                        Reading Portal
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('school_partnerships') }}">
+                                        <i class="ico-arrow-right"></i>
+                                        School Partnerships
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="https://www.ourkidsread.org/newsletter-24-may">
+                                        <i class="ico-arrow-right"></i>
+                                        Newsletter
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('new_letter_sign_up') }}">
+                                        <i class="ico-arrow-right"></i>
+                                         Sign-Up
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('contact_us') }}">
+                                        <i class="ico-arrow-right"></i>
+                                        Contact Us
+                                    </a>
+                                </li>
+                            </ul>
+    
+                        </nav><!-- /.nav-secondary -->
+    
+    
+    
+                        <nav class="nav">
+                            <ul>
+                                <li>
+                                    <a href="{{ route('home') }}">
+                                        <i class="ico-arrow-right"></i>
+                                        Home
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('about') }}">
+                                        <i class="ico-arrow-right"></i>
+                                        About
+                                    </a>
+                                </li>
+    
+    
+    
+                                <li>
+                                    <a href="{{ route('mission') }}">
+                                        <i class="ico-arrow-right"></i>
+                                        Mission
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="{{ route('book_collection') }}">
+                                        <i class="ico-arrow-right"></i>
+                                        Book Collections
+                                    </a>
+    
+                                </li>
+                                <li>
+    
+                                    <a href="{{ route('succes_stories') }}">
+    
+                                        <i class="ico-arrow-right"></i>
+    
+    
+    
+                                        Success Stories
+    
+                                    </a>
+    
+                                </li>
+    
+                                <li>
+    
+                                    <a href="{{ route('sponsors') }}">
+    
+                                        <i class="ico-arrow-right"></i>
+    
+    
+    
+                                        Sponsors
+    
+                                    </a>
+    
+                                </li>
+    
+    
+                                <li>
+    
+                                    <a href="{{ route('faq') }}">
+    
+                                        <i class="ico-arrow-right"></i>
+    
+    
+    
+                                        FAQ
+    
+                                    </a>
+    
+                                </li>
+    
+    
+    
+                                <li>
+    
+                                    <a href="{{ route('donate_now') }}">Donate Now</a>
+    
+                                </li>
+    
+                            </ul>
+    
+                        </nav><!-- /.nav -->
+    
+                    </div><!-- /.header__bar -->
+
+
+                    <div class="nav-toggle js-nav-mobile">
+
+                        <span></span>
+
+
+
+                        <span></span>
+
+
+
+                        <span></span>
+
+                    </div><!-- /.nav-toggle -->
+
+                </div><!-- /.shell -->
+
+            </header><!-- /.header -->
+
+            <section id="desc-area" class="desc-section about-area bg-green-light">
+                <div class="container">
+                    <div class="row pb-30 row-center book-list">
+                        <div class="col-md-12 padding-text">
+                            <h2 class="font-500 sub-title">What is an Our Kids Read Storytelling and Free Book Festival?
+                            </h2>
+                            <hr class="hr-bg hr-bg-red">
+                        </div>
+                        <div class="col-md-6 padding-zero">
+                            <div class="about-content padding-text">
+                                <p>Our Kids Read brings storytellers and yes, FREE books to K-5th grade schools, after
+                                    school programs, community centers, homeless shelters and places of worship across
+                                    the country.</p>
+                                <p>Our Events Feature:</p>
+                                <ul class="event-lists">
+                                    <li>Storytellers (our bi-lingual storytellers tell stories in English and in Spanish
+                                        using folklore from Africa, Asia and Latin America</li>
+                                    <li>Drummers (often the OKR storytelling accompanied by African drumming, bringing
+                                        the stories to life)</li>
+                                    <li>Free Books – each child at an Our Kids Read Storytelling and Free Book Festical
+                                        receives three (3) free books</li>
+                                </ul>
+                                <br>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="about-image">
+                                <div style="padding:56.25% 0 0 0;position:relative;"><iframe
+                                        src="https://player.vimeo.com/video/765958875?h=f1017f34bf&amp;autoplay=1&amp;loop=1&amp;title=0&amp;byline=0&amp;portrait=0"
+                                        style="position:absolute;top:0;left:0;width:100%;height:100%;" frameborder="0"
+                                        allow="autoplay; fullscreen; picture-in-picture" allowfullscreen=""
+                                        data-ready="true"></iframe></div>
+                                <script src="https://player.vimeo.com/api/player.js"></script>
+                                <a href="https://vimeo.com/showcase/10055074" target="_blank">
+                                    <p class="fest-content text-center text-white bg-red btn-padding">View Video
+                                        Archives of Recent Book Festivals</p>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-12 padding-text mt-30 mb_70">
+                            <a href="https://www.ourkidsread.org/sponsor">
+                                <p class="btn-click text-center btn-padding bd-green">Click Here to Sponsor a
+                                    Storytelling and Free Book Festival in your area!</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="event-area" class="event-section">
+                <div class="container">
+                    <div class="row row-center book-list">
+                        <div class="col-md-12 tab-wrapper  padding-zero">
+                            <div class="tabs js-tabs">
+                                <div class="tabs__head">
+                                    <div class="tabs__nav js-tabs-nav">
+                                        <ul class="event-tabs" style="background: white;">
+                                            <li class="is-current">
+                                                <a href="#tab11" id="link-tab1">
+                                                    <p>UPCOMING EVENTS</p>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#tab12" id="link-tab2">
+                                                    <p>PAST EVENTS</p>
+                                                </a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#tab13" id="link-tab3">
+                                                    <p>OUR STORYTELLING TEAM</p>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="tabs__body js-tabs-body">
+                                    <div class="tab js-tab-pane is-current" id="tab11" style="background: white;">
+                                        <div class="row mb-50">
+                                            <div class="col-md-3">
+                                                <div class="left-upcoming height-100 bg-gray padding-text pt-30">
+                                                    <p class="fest-content">DECEMBER<br>2022</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="about-content padding-text">
+                                                    <h3 class="font-500 sub-title">WIN (Women in Need) Shelter
+                                                        Storytelling and Book Giveaway Event</h3>
+                                                    <hr class="hr-bg hr-bg-red">
+                                                    <p>Our Kids Read and Women in Need (Win) are partnering to provide
+                                                        free diverse books and storytelling to children and families at
+                                                        the Junius Center in Brooklyn, NY. The event will feature
+                                                        English and Spanish elements given the anticipated large number
+                                                        of Hispanic families in attendance.</p>
+                                                    <h3 class="font-500 sub-title featured-books">Featured Books at this
+                                                        Event: </h3>
+                                                    <div class="event-image div-flex">
+                                                        <img src="{{ asset('frontend/img/f1_1.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f1_2.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f1_3.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f1_4.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f1_5.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f1_6.jpg')}}" class="img-responsive" alt="Image">
+                                                    </div>
+                                                </div>
+                                                <div class="padding-text mt-30 d-flex">
+                                                    <a href="https://www.ourkidsread.org/donate-ourkidsread">
+                                                        <p class="btn-click btn-padding bd-green">Donate to Support this
+                                                            Event</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-50">
+                                            <div class="col-md-3">
+                                                <div class="left-upcoming height-100 bg-gray padding-text pt-30">
+                                                    <p class="fest-content">JANUARY<br>2023</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="about-content padding-text">
+                                                    <h3 class="font-500 sub-title">Storefront Academy – Bronx, NY</h3>
+                                                    <hr class="hr-bg hr-bg-red">
+                                                    <p>This will be the second Storefront Academy event, a follow-up to
+                                                        the October 28, 2022 event at the Storefront Academy – Harlem,
+                                                        NY location. Special thanks to donor Patti Astor and OKR partner
+                                                        Easy AD Harris of The Legendary Cold Crush Brothers for
+                                                        collaborating with Our Kids Read to make this a truly
+                                                        spectacular event for the students</p>
+                                                    <h3 class="font-500 sub-title featured-books">Featured Books at this
+                                                        Event: </h3>
+                                                    <div class="event-image div-flex">
+                                                        <img src="{{ asset('frontend/img/f4_1.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f4_2.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f4_3.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f4_4.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f4_5.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f4_6.jpg')}}" class="img-responsive" alt="Image">
+                                                    </div>
+                                                </div>
+                                                <div class="padding-text mt-30 d-flex">
+                                                    <a href="https://www.ourkidsread.org/donate-ourkidsread">
+                                                        <p class="btn-click btn-padding bd-green">Donate to Support this
+                                                            Event</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-50">
+                                            <div class="col-md-3">
+                                                <div class="left-upcoming height-100 bg-gray padding-text pt-30">
+                                                    <p class="fest-content">JANUARY<br>2023</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="about-content padding-text">
+                                                    <h3 class="font-500 sub-title">PS 104 – Brooklyn, NY</h3>
+                                                    <hr class="hr-bg hr-bg-red">
+                                                    <p>This is a very special event, developed in memory of the donor’s
+                                                        son. The donor, Kamil Ali-Jackson, Princeton Class of ’81, will
+                                                        honor her son with her sister Karen Ali with classroom readings
+                                                        featuring books about remembrance. Our Kids Read plans to serve
+                                                        120 students at this event, donating three (3) books to each
+                                                        student, 360 books in total.</p>
+                                                    <h3 class="font-500 sub-title featured-books">Featured Books at this
+                                                        Event: </h3>
+                                                    <div class="event-image div-flex">
+                                                        <img src=" {{ asset('frontend/img/f3_1.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f3_2.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f3_3.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f3_4.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f3_5.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f3_6.jpg')}}" class="img-responsive" alt="Image">
+                                                    </div>
+                                                </div>
+                                                <div class="padding-text mt-30 d-flex">
+                                                    <a href="https://www.ourkidsread.org/donate-ourkidsread">
+                                                        <p class="btn-click btn-padding bd-green">Donate to Support this
+                                                            Event</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-50">
+                                            <div class="col-md-3">
+                                                <div class="left-upcoming height-100 bg-gray padding-text pt-30">
+                                                    <p class="fest-content">FEBRUARY<br>2023</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="about-content padding-text">
+                                                    <h3 class="font-500 sub-title">Start Lighthouse – Bronx, NY</h3>
+                                                    <hr class="hr-bg hr-bg-red">
+                                                    <p>Thanks to Concetta Gleason and Rina Madhani for the invitation to
+                                                        hold an OKR Storytelling and Free Book Festival at the PS/MS 5X,
+                                                        Port Morris School of Community Leadership location in the
+                                                        Bronx. We can’t wait to meet your young scholars and engage them
+                                                        in their reading journey.</p>
+                                                    <h3 class="font-500 sub-title featured-books">Featured Books at this
+                                                        Event: </h3>
+                                                    <div class="event-image div-flex">
+                                                        <img src=" {{ asset('frontend/img/f2_1.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f2_2.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f2_3.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f2_4.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f2_5.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src=" {{ asset('frontend/img/f2_6.jpg')}}" class="img-responsive" alt="Image">
+                                                    </div>
+                                                </div>
+                                                <div class="padding-text mt-30 d-flex">
+                                                    <a href="https://www.ourkidsread.org/donate-ourkidsread">
+                                                        <p class="btn-click btn-padding bd-green">Donate to Support this
+                                                            Event</p>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab tab--three-grid tab--seafoam js-tab-pane" id="tab12"
+                                        style="background: white;">
+                                        <div class="row mb-50">
+                                            <div class="col-md-3">
+                                                <div class="left-upcoming height-100 bg-gray padding-text pt-30">
+                                                    <p class="fest-content">NOVEMBER<br>2022</p>
+                                                    <p class="fest-content">DATE:<br><span
+                                                            class="sub-title-past">FRIDAY,<br>NOVEMBER<br>18,2022</span>
+                                                    </p>
+                                                    <p class="fest-content">LOCATION:<br><span class="sub-title-past">PS
+                                                            154-<br>THE EVERGREEN<br>SCHOOL</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="about-content padding-text">
+                                                    <h3 class="font-500 sub-title">The Evergreen School</h3>
+                                                    <hr class="hr-bg hr-bg-red">
+                                                    <p>Thanks to Meaghan Gribbins, Principal Christine Baez and District
+                                                        8 superstar Mark Weisman for inviting OKR to bring a
+                                                        Storytelling and Free Book Festival to your school. We server
+                                                        over 600 children and donated over 1,800 books to PS 152 at this
+                                                        event.</p>
+                                                    <h3 class="font-500 sub-title featured-books">Featured Books at this
+                                                        Event: </h3>
+                                                    <div class="event-image div-flex">
+                                                        <img src="{{ asset('frontend/img/f5_1.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f5_2.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f5_3.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f5_4.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f5_5.jpg')}}" class="img-responsive" alt="Image">
+                                                        <img src="{{ asset('frontend/img/f5_6.jpg')}}" class="img-responsive" alt="Image">
+                                                    </div>
+                                                    <br>
+                                                    <h3 class="font-500 sub-title featured-books">Photo/Video from the
+                                                        event: </h3>
+                                                    <div class="event-image event-vieo div-flex">
+                                                        <a href="https://vimeo.com/showcase/10055074" target="_blank">
+                                                            <img src="{{ asset('frontend/img/video1.png')}}" class="img-responsive" alt="Image">
+                                                        </a>
+                                                        <a href="https://vimeo.com/showcase/10055074" target="_blank">
+                                                            <img src="{{ asset('frontend/img/video2.png')}}" class="img-responsive" alt="Image">
+                                                        </a>
+                                                        <a href="https://vimeo.com/showcase/10055074" target="_blank">
+                                                            <img src="{{ asset('frontend/img/video3.png')}}" class="img-responsive" alt="Image">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <div class="clear-both padding-text mt-30 d-flex">
+                                                    <a href="https://www.ourkidsread.org/donate-ourkidsread">
+                                                        <p class="btn-click btn-padding bd-green">Donate to Support a
+                                                            2nd Event at this School</p>
+                                                    </a>
+                                                </div>
+                                                <br>
+                                                <div class="about-content padding-text">
+                                                    <h3 class="font-500 sub-title">School testimonial:</h3>
+                                                    <hr class="hr-bg hr-bg-red">
+                                                    <p>“We were so pleased to have Our Kids Read come to our school. The
+                                                        kids loved the storytelling and the drumming, we’d love to have
+                                                        them back next year!”</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab tab--tangerine js-tab-pane" id="tab13" style="background: white;">
+                                        <div class="row mb-50">
+                                            <div class="col-md-3">
+                                                <div class="left-upcoming height-100 padding-text">
+                                                    <img src="https://www.ourkidsread.org/assets/images/ansimi.jfif"
+                                                        class="img-responsive m-auto" alt="Image">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="about-content padding-text">
+                                                    <h3 class="font-500 sub-title">NASIMI MURUMBA</h3>
+                                                    <hr class="hr-bg hr-bg-red">
+                                                    <p>Simi is the heart and soul of the Our Kids Read storytelling
+                                                        musician. A talented singer and musician, Simi brings a wealth
+                                                        of experience working with youth and educating through the use
+                                                        of language and music. Young people are captivated by the
+                                                        strength and energy she brings to performances and clamour for
+                                                        her return months after performances. </p>
+                                                    <h3 class="font-500 sub-title featured-books">Photos and videos of
+                                                        past events: </h3>
+                                                    <div class="event-image event-vieo div-flex">
+                                                        <a href="https://vimeo.com/showcase/10055074" target="_blank">
+                                                            <img src="{{ asset('frontend/img/video1.png')}}" class="img-responsive" alt="Image">
+                                                        </a>
+                                                        <a href="https://vimeo.com/showcase/10055074" target="_blank">
+                                                            <img src="{{ asset('frontend/img/video2.png')}}" class="img-responsive" alt="Image">
+                                                        </a>
+                                                        <a href="https://vimeo.com/showcase/10055074" target="_blank">
+                                                            <img src="{{ asset('frontend/img/video3.png')}}" class="img-responsive" alt="Image">
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+
+
+        </div>
+
+
+        <footer id="footer" class="bg-green">
+            <div class="shell">
+                <div class="row">
+                    <div class="col-md-8">
+                        <img src="{{ asset('new/assets/images/logo.svg')}}"
+                            class="img-responsive" alt="Image">
+                        <p class="copyright text-white small-text">Copyright 2024 Our Kids Read &nbsp;
+                            <a href="#">Privacy Policy</a> &nbsp; | &nbsp;
+                            <a href="#">Terms and Conditions</a> &nbsp; | &nbsp;
+                            <span>Tax ID: XXXXXXXXXXXXX</span>
+                        </p>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="follow div-flex">
+                            <p class="follow-text text-white small-text">Follow us
+                                <a href="#" class="fa fa-facebook"></a>
+                                <a href="#" class="fa fa-twitter"></a>
+                                <a href="#" class="fa fa-instagram"></a>
+                                <a href="#" class="fa fa-play"></a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+
+    </div>
+    <script src="{{ asset('frontend/js/style.js') }}"></script>
+    <script src="{{ asset('frontend/js/styletwo.js') }}"></script>
+
+    <script src="https://www.ourkidsread.org/new/assets/vendor/jquery-3.6.0.min.js"></script>
+    <script src="https://www.ourkidsread.org/new/assets/js/bundle.js"></script>
+    <script>
+        window.__lc = window.__lc || {};
+        window.__lc.license = 16558326;
+        ; (function (n, t, c) { function i(n) { return e._h ? e._h.apply(null, n) : e._q.push(n) } var e = { _q: [], _h: null, _v: "2.0", on: function () { i(["on", c.call(arguments)]) }, once: function () { i(["once", c.call(arguments)]) }, off: function () { i(["off", c.call(arguments)]) }, get: function () { if (!e._h) throw new Error("[LiveChatWidget] You can't use getters before load."); return i(["get", c.call(arguments)]) }, call: function () { i(["call", c.call(arguments)]) }, init: function () { var n = t.createElement("script"); n.async = !0, n.type = "text/javascript", n.src = "https://cdn.livechatinc.com/tracking.js", t.head.appendChild(n) } }; !n.__lc.asyncInit && e.init(), n.LiveChatWidget = n.LiveChatWidget || e }(window, document, [].slice))
+    </script>
+</body>
+
+</html>
